@@ -20,28 +20,38 @@ namespace Wielomianator_Console_App
 
     class Polynomial
     {
-        int thirdPowerNumber;
-        int secondPowerNumber;
-        int firstPowerNumber;
+        int thirdPowerBase;
+        int secondPowerBase;
+        int firstPowerBase;
         int lastNumber;
         int x;
         List<int> dzielniki;
+        Number thirdPower;
+        Number secondPower;
+        Number firstPower;
 
         public Polynomial(int tPN, int sPN, int fPN, int ln)
         {
-            thirdPowerNumber = tPN;
-            secondPowerNumber = sPN;
-            firstPowerNumber = fPN;
+            thirdPowerBase = tPN;
+            secondPowerBase = sPN;
+            firstPowerBase = fPN;
             lastNumber = ln;
+            Number thirdPower = new Number(thirdPowerBase, 3);
+            Number secondPower = new Number(secondPowerBase, 2);
+            Number firstPower = new Number(firstPowerBase, 1);
+
         }
 
         public Polynomial(int tPN, int sPN, int fPN, int ln, int _x)
         {
-            thirdPowerNumber = tPN;
-            secondPowerNumber = sPN;
-            firstPowerNumber = fPN;
+            thirdPowerBase = tPN;
+            secondPowerBase = sPN;
+            firstPowerBase = fPN;
             lastNumber = ln;
             x = _x;
+            Number thirdPower = new Number(thirdPowerBase, 3);
+            Number secondPower = new Number(secondPowerBase, 2);
+            Number firstPower = new Number(firstPowerBase, 1);
         }
 
         public void ZnajdzDzielniki()
@@ -85,7 +95,7 @@ namespace Wielomianator_Console_App
                 Console.WriteLine("Sprawdzam Dzielnik: " + dzielnik);
                 int x = dzielnik;
 
-                if(thirdPowerNumber*x*x*x + secondPowerNumber*x*x + firstPowerNumber*x + lastNumber == 0)
+                if(thirdPowerBase*x*x*x + secondPowerBase*x*x + firstPowerBase*x + lastNumber == 0)
                 {
                     Console.WriteLine("Wynik: " + dzielnik);
                     Podziel(dzielnik);
@@ -104,36 +114,36 @@ namespace Wielomianator_Console_App
             int czynnik3;
 
             czynnik1 = -dzielnik;
-            int zmiejszenie_stopnia = (thirdPowerNumber * x * x * x + secondPowerNumber * x * x + firstPowerNumber * x + lastNumber) / (x + czynnik1);
+            int zmiejszenie_stopnia = (thirdPowerBase * x * x * x + secondPowerBase * x * x + firstPowerBase * x + lastNumber) / (x + czynnik1);
             Console.WriteLine(zmiejszenie_stopnia);
             //int wynik1 = (x + czynnik1) * (x + czynnik2) * (x + czynnik3);
-            int wynik2 = thirdPowerNumber * x * x * x + secondPowerNumber * x * x + firstPowerNumber * x + lastNumber;
+            int wynik2 = thirdPowerBase * x * x * x + secondPowerBase * x * x + firstPowerBase * x + lastNumber;
         }
 
         public void Value()
         {
-            float wynik = thirdPowerNumber * x * x * x + secondPowerNumber * x * x + firstPowerNumber * x + lastNumber;
+            float wynik = thirdPowerBase * x * x * x + secondPowerBase * x * x + firstPowerBase * x + lastNumber;
             Console.WriteLine(wynik);
         }
 
         public void Multiplicate(Polynomial _poly2)
         {
-            thirdPowerNumber*= _poly2.thirdPowerNumber;
-            secondPowerNumber *= _poly2.secondPowerNumber;
-            firstPowerNumber *= _poly2.firstPowerNumber;
+            thirdPowerBase*= _poly2.thirdPowerBase;
+            secondPowerBase *= _poly2.secondPowerBase;
+            firstPowerBase *= _poly2.firstPowerBase;
             lastNumber *= _poly2.lastNumber;
         }
 
         public void Write()
         {
-            Console.WriteLine(thirdPowerNumber.ToString() + "x^3 + " +secondPowerNumber.ToString() + "x^2 + " + firstPowerNumber.ToString() + "x + " + lastNumber.ToString() + " = ");
+            Console.WriteLine(thirdPowerBase.ToString() + "x^3 + " +secondPowerBase.ToString() + "x^2 + " + firstPowerBase.ToString() + "x + " + lastNumber.ToString() + " = ");
         }
 
         public void WriteWynik()
         {
             Console.BackgroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Wynik działania: " + thirdPowerNumber.ToString() + "x^3 + " + secondPowerNumber.ToString() + "x^2 + " + firstPowerNumber.ToString() + "x + " + lastNumber.ToString());
+            Console.WriteLine("Wynik działania: " + thirdPowerBase.ToString() + "x^3 + " + secondPowerBase.ToString() + "x^2 + " + firstPowerBase.ToString() + "x + " + lastNumber.ToString());
             Console.ResetColor();
         }
     }
